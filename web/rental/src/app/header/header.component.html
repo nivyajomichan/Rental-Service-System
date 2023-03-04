@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-md navbar-dark bato">
+    <a class="navbar-brand" href="#"><i class="material-icons">invert_colors</i>Acquérir</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+        <ul class="navbar-nav  ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/home">Home</a>
+            </li>
+            <li class="nav-item active" *ngIf="loggedIn() && isUser">
+                <a class="nav-link" routerLink="/cart">Cart</a>
+            </li>
+            <li class="nav-item active" *ngIf="loggedIn() && !isUser">
+                <a class="nav-link" routerLink="/chat">Chat</a>
+            </li>
+
+            <li class="nav-item active" *ngIf="loggedIn() && isAdmin">
+                <a class="nav-link" routerLink="/comp">Complaints</a>
+            </li>
+            <li class="nav-item active" *ngIf="loggedIn()">
+                <a class="nav-link" href="#"><i class="material-icons">person </i> {{this.loggedInuser}}</a>
+            </li>
+            <li class="nav-item active" *ngIf="loggedIn()" (click)="clicked()">
+                <a class="nav-link" routerLink="/home">Logout</a>
+            </li>
+            <li class="nav-item active" *ngIf="!loggedIn()">
+                <a class="nav-link" routerLink="/login">Login</a>
+            </li>
+            <li class="nav-item active" (click)="clicked()" *ngIf="!loggedIn()">
+                <a class="nav-link" routerLink="/signup">Signup</a>
+            </li>
+            <li class="nav-item active" (click)="clicked()">
+                <a class="nav-link" routerLink="/addproduct">Add Product</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>

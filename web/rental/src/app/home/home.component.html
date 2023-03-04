@@ -1,0 +1,88 @@
+<div class="jumbotron text-center white">
+    <h1 class="display-3">Welcome to Acquérir!</h1>
+    <h4>One place for your all renting needs</h4>
+    <hr>
+</div>
+
+<div class="container">
+    <form>
+        <div class="md-form active-pink active-pink-2 mb-3">
+            <input class="form-control" placeholder="Search" type="search" [(ngModel)]="searchText" autocomplete="off" name="search">
+        </div>
+    </form>
+    <div class="filters row">
+        <div class="col">
+            <select [(ngModel)]="SearchKey" (ngModelChange)="searchByCategory()" class="form-control">
+                <option value="" disabled selected>Please select Category</option>
+                <option value="Cars">Cars</option>
+                <option value="Boats">Boats</option>
+                <option value="Services">Services</option>
+                <option value="Apartments">Apartment</option>
+            </select>
+        </div>
+
+        <div class="col">
+            <select [(ngModel)]="BrandKey" (ngModelChange)="searchByBrand()" class="form-control">
+                <option value="" disabled selected>Please select Brand</option>
+                <option value="Honda">Honda</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Sterling">Sterling</option>
+                <option value="BMW">BMW</option>
+                <option value="Sea Ray">Sea Ray</option>
+                <option value="Boston Whaler">Boston Whaler</option>
+                <option value="HomeServices">Home Services</option>
+                <option value="DeerPark">Deer Park</option>
+            </select>
+        </div>
+
+        <div class="col">
+            <select [(ngModel)]="RateKey" (ngModelChange)="searchByRating()" class="form-control">
+                <option value="0" disabled selected>Please choose Rating</option>
+                <ng-container *ngFor="let opt of options; let i = index">
+                    <option [value]="i + 1">{{options[i]}}</option>
+                </ng-container>
+            </select>
+        </div>
+        <div class="col" *ngIf = loggedIn()><button (click)="getrec()" class="btn refreshbtn">Recommendations</button></div>
+        <div class="col"><button (click)="refresh()" class="btn refreshbtn"><span
+                    class="material-icons">refresh</span></button></div>
+    </div>
+    <div class="spacer"></div>
+
+    <div>
+        <div class="alert alert-danger my-auto mx-auto" *ngIf="this.SearchKey == null && this.RateKey == 0">
+            You have not selected any category
+        </div>
+        <div class="alert alert-danger my-auto mx-auto" *ngIf="productList?.length == 0">
+            Oops, No products in this category found
+        </div>
+    </div>
+
+    <div class="products row" *ngIf="this.productList.length != 0 && this.SearchKey != null">
+        <div class="product card cardw" *ngFor="let product of productList | filter:searchText">
+            <img class="card-img-top imgsize" src="{{product.image}}" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">{{product.productName}}</h4>
+                <div class="card-text">
+                    <div class="badge bg-success">Rating</div>
+                    <span class="float-right">{{product.rating}}<span class="material-icons">favorite</span></span>
+                </div>
+
+                <div class="card-text">
+                    <div class="badge bg-success">Brand</div>
+                    <span class="float-right">{{product.brand}}</span>
+                </div>
+                <div class="card-text">
+                    <div class="badge bg-primary">Price</div>
+                    <button (click)="makePayment(product.price)" class="btn btn-primary">Pay ${{product.price}}</button>
+                </div>
+                <div class="card-text">
+                    <div class="badge bg-secondary" (click)="openGmaps(product.address)">View on Map</div>
+                </div>
+                </div>
+                <button class="btn custbtn mt-3 mb-2" (click)="book(product.id)" *ngIf="loggedIn() && isUser">Book now</button>
+                <!-- //add the google api response component here  -->
+            </div>
+        </div>
+    </div>
+</div>

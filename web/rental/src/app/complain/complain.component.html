@@ -1,0 +1,15 @@
+<div class="container">
+<form [formGroup]="complainForm" (ngSubmit)="oncomplSubmit(id,own)">
+    <label for="complaint">Complaint</label> 
+    <input type="text" class="form-control" placeholder="Enter your complaint in 250 char" formControlName="complaint" id="complaint">
+    <div class="text-danger" *ngIf="complaint?.invalid && complaint?.errors?.['required'] && complaint?.touched">Complaint is required</div>
+    <div class="text-danger" *ngIf="complaint?.errors?.['maxLength']">Max 250 char reached</div>
+    <br>
+    <div class="row">
+        <div class="col">
+        <button type="submit" class="btn custbtn" [disabled]="complainForm.invalid">Post</button></div>
+        <div class="col">
+            <button type="button" class="btn custbtn" (click)="complainmodalRef.close()">Close</button></div>
+        </div>
+</form>
+</div>

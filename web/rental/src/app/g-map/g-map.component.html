@@ -1,0 +1,7 @@
+<!-- <p>g-map works!</p> -->
+<div *ngIf="apiLoaded | async">
+    <google-map [options]="options">
+        <map-marker [options]="options">
+        </map-marker>
+    </google-map>
+</div>

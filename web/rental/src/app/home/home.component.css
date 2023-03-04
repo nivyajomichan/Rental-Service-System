@@ -1,0 +1,40 @@
+/* :host {
+    
+} */
+
+.imgsize {
+    height: auto;
+    width: 50%;
+}
+
+.refreshbtn {
+    background-color: #a6adad;
+    color: #161717;
+}
+
+.refreshbtn:hover {
+    color: #161717;
+}
+
+.product {
+    flex-direction: row;
+    padding: 0;
+    width: calc(50% - 2rem);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.spacer {
+    margin-top: 3rem;
+}
+
+.card-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.agm-map {
+    height: 30px;
+}

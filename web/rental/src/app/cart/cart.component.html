@@ -1,0 +1,55 @@
+<div class="container">
+    <br>
+    <div class="card">
+    <h1>Cart</h1>
+    <div class="alert alert-danger my-auto mx-auto" *ngIf="cart?.length == 0">
+        Oops, No products in cart
+    </div>
+    <div *ngIf="cart?.length != 0">
+     <ul class="list-group list-group-flush">
+         <div *ngFor="let item of cart">
+        <li class="list-group-item" >
+            <div class="row">
+                <div class="col">
+                <h5 class="card-title">{{item.productName}}</h5></div>
+                <div class="col">
+                <div class="badge bg-primary mapb" (click)="return(item)">Return</div></div>
+                <div class="col">
+                <div class="badge bg-success mapb" (click)="contact()">Contact</div></div>
+            </div>
+        </li>
+        </div>
+      </ul>
+
+    </div>
+    </div>
+    <br>
+    <div class="card" *ngIf="prev_bookings?.length != 0">
+        <h1>Previous Bookings</h1>
+        <div class="alert alert-danger my-auto mx-auto" *ngIf="prev_bookings?.length == 0">
+            Oops, No Previous Bookings
+        </div>
+        <div *ngIf="prev_bookings?.length != 0">
+        <div class="card-text">
+         <ul class="list-group list-group-flush">
+             <div *ngFor="let item of prev_bookings">
+            <li class="list-group-item" >
+                <div class="row">
+                <div class="col">
+                <h5 class="card-title">{{item.productName}}</h5></div>
+                <div class="col">
+                <div class="badge bg-primary mapb" (click)="clickr(item)">Click to rate</div></div>
+                <div class="col">
+                <div class="badge bg-success mapb" (click)="clickc(item)">Post Complaint</div></div>
+
+
+            </div>
+                <!-- <a class="nav-link" >Contact</a> -->
+            </li>
+            </div>
+          </ul>
+          </div>
+        </div>
+        </div>
+</div>
+

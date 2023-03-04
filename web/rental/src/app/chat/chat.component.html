@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="chat-content">
+        <br>
+        <div class="card">
+            <h4>Chat</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let chatMessage of webSocketService.chatMessages">
+                    <div class="row sizein">{{chatMessage.user}}: {{chatMessage.message}}</div>
+                </li>
+            </ul>
+    </div>
+    <form [formGroup]="chatForm" (ngSubmit)="sendMessage()">
+        <div class="chat-send row">
+            <div class="col-10">
+            <input type="text" class="form-control" placeholder="Enter your message" formControlName="message" id="message">
+            </div>
+            <div class="col-2">
+                <button type="submit" class="btn custbtn">Send</button>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>

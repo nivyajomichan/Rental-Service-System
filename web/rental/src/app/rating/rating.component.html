@@ -1,0 +1,17 @@
+<div class="container">
+<form [formGroup]="rateForm" (ngSubmit)="onrateSubmit(id)">
+    <label for="rating">Rating for {{title}}</label>
+    <br>
+    <div class="row">
+    <input type="text" class="form-control" placeholder="Rate the product in 0-5" formControlName="rating" id="rating">
+    <div class="text-danger" *ngIf="rating?.invalid && rating?.errors?.['required'] && rating?.touched">rating is required</div>
+    <div class="text-danger" *ngIf="rating?.errors?.['min']||rating?.errors?.['max']">Rating should be 0-5</div></div>
+    <br>
+    <div class="row">
+    <div class="col">
+    <button type="submit" class="btn custbtn" [disabled]="rateForm.invalid">Click to rate</button></div>
+    <div class="col">
+        <button type="button" class="btn custbtn" (click)="ratingmodalRef.close()">Close</button></div>
+    </div>
+</form>
+</div>

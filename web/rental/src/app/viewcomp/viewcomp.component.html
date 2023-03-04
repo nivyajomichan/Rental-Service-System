@@ -1,0 +1,23 @@
+<div class="container">
+    <br>
+    <div class="card">
+    <h1>Complaints</h1>
+    <div class="alert alert-danger my-auto mx-auto" *ngIf="cart?.length == 0">
+        Yaay, No Complaints found
+    </div>
+    <div *ngIf="cart?.length != 0">
+     <ul class="list-group list-group-flush">
+         <div *ngFor="let item of cart">
+        <li class="list-group-item" >
+            <div class="row">
+                <div class="col">
+                <h5 class="card-title">On {{item.owname}}</h5></div>
+                <div class="row">
+                {{item.comptext}}</div>
+            </div>
+        </li>
+        </div>
+      </ul>
+
+    </div>
+    </div>
